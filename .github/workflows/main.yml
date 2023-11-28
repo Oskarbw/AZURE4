@@ -29,7 +29,7 @@ jobs:
         run: dotnet build ./AZURE4.sln --configuration Release --no-restore
 
       - name: Publish
-        run: dotnet publish ./AZURE4.sln --configuration Release --no-build
+        run: dotnet publish ./AZURE4.sln --configuration Release --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE }}"
 
       - name: Deployment
         uses: azure/webapps-deploy@v2
