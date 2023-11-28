@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\AZURE4.props" />
+</Project>
