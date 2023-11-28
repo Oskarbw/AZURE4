@@ -7,7 +7,7 @@ on:
     - main
 
 env:
-  AZURE-WEBAPP-PACKAGE: "./publish"
+  AZURE_WEBAPP_PACKAGE: "./publish"
 
 
 jobs:
