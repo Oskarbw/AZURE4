@@ -26,3 +26,10 @@ jobs:
 
       - name: Publish
         run: dotnet publish ./AZURE4.sln --configuration Release --no-build
+
+      - name: Deployment
+        uses: actions/webapps-deploy@v2
+        with:
+          app-name: 'AZURE4'
+          publish-profile: ${{ secret.AZURE_PUBLISH_PROFILE }}
+          package: "./publish"
