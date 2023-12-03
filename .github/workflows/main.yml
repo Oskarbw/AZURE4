@@ -43,6 +43,10 @@ jobs:
           tar -xzf gitversion-linux-x64-5.12.0.tar.gz
           sudo mv gitversion /usr/local/bin/
 
+      - name: Configure Git
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
       - name: Bump version
         run: |
           current_version=$(gitversion /showvariable SemVer)
