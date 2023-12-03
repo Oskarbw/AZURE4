@@ -19,6 +19,9 @@ jobs:
 
       - name: Fetch all history
         run: git fetch --prune --unshallow
+
+      - name: Install semver
+        run: npm install -g semver
       
       - name: Install libgit2 from source
         run: |
@@ -40,8 +43,14 @@ jobs:
           tar -xzf gitversion-linux-x64-5.12.0.tar.gz
           sudo mv gitversion /usr/local/bin/
 
-      - name: Increase version
-        run: gitversion /bump
+      - name: Bump version
+        run: |
+          current_version=$(gitversion /showvariable SemVer)
+          new_version=$(semver bump minor $current_version)
+          echo "Current version: $current_version"
+          echo "New version: $new_version"
+          git tag -a $new_version -m "Bump version to $new_version"
+          git push origin $new_version
 
   
       - name: Get version
