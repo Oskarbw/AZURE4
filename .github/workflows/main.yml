@@ -41,7 +41,7 @@ jobs:
           sudo mv gitversion /usr/local/bin/
 
       - name: Increase version
-        run: git fetch --tags && git tag -a $(gitversion /bump) -m "Bump version"
+        run: gitversion /bump
 
   
       - name: Get version
