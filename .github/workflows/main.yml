@@ -40,6 +40,10 @@ jobs:
           tar -xzf gitversion-linux-x64-5.12.0.tar.gz
           sudo mv gitversion /usr/local/bin/
 
+      - name: Increase version
+        run: git fetch --tags && git tag -a $(gitversion /bump) -m "Bump version"
+
+  
       - name: Get version
         id: get-version
         run: |
