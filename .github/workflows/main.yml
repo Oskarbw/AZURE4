@@ -47,7 +47,7 @@ jobs:
         id: get-version
         run: |
           version=$(gitversion /showvariable SemVer)
-          echo "Version: $version"
+          echo "Version: 0.2.0"
           echo "::set-output name=version::$version"
           echo "##[group]Set output for later use"
           echo "VERSION=$version" >> $GITHUB_ENV
