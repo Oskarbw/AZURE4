@@ -56,7 +56,7 @@ jobs:
       
       - name: Use the version in subsequent steps
         run: |
-          echo "The version is $VERSION"
+          echo "The version is 0.2.0"
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
