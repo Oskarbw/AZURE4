@@ -16,6 +16,25 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Install GitVersion
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget
+          wget https://github.com/GitTools/GitVersion/releases/download/5.6.7/gitversion-linux-x64-5.6.7.tar.gz
+          tar -xzf gitversion-linux-x64-5.6.7.tar.gz
+          sudo mv gitversion /usr/local/bin/
+  
+      - name: Get version
+        id: get-version
+        run: |
+          version=$(gitversion /output buildserver /showvariable SemVer)
+          echo "Version: $version"
+          echo "##[set-output name=version;]$version"
+        shell: bash
+
+      - name: Use the version in subsequent steps
+        run: echo "The version is ${{ steps.get-version.outputs.version }}"
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
