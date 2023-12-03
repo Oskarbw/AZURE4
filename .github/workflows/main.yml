@@ -42,18 +42,6 @@ jobs:
           wget https://github.com/GitTools/GitVersion/releases/download/5.12.0/gitversion-linux-x64-5.12.0.tar.gz
           tar -xzf gitversion-linux-x64-5.12.0.tar.gz
           sudo mv gitversion /usr/local/bin/
-
-      - name: Configure Git
-        run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
-      - name: Bump version
-        run: |
-          current_version=$(gitversion /showvariable SemVer)
-          new_version=$(semver bump minor $current_version)
-          echo "Current version: $current_version"
-          echo "New version: $new_version"
-
   
       - name: Get version
         id: get-version
